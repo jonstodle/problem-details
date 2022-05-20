@@ -1,5 +1,6 @@
 @import "fonts";
 @import "colors";
+@import "balloon";
 
 html, body {
   font-family: "Atkinson Hyperlegible", sans-serif;
@@ -17,28 +18,48 @@ code {
   font-family: "JetBrains Mono", monospace;
 }
 
-section {
+main {
+  section {
+    display: flex;
+    justify-content: center;
+    padding: 2rem .5rem;
+  }
+
+  section:nth-child(2), section:nth-child(4), section:nth-child(6) {
+    color: white;
+    background-color: var(--color-olive);
+  }
+
+  section:nth-child(5) {
+    background-color: var(--color-yellow);
+  }
+
+  article {
+    width: 40rem;
+    max-width: 100%;
+    text-align: justify;
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+}
+
+aside.links-container {
   display: flex;
-  justify-content: center;
-  padding: 2rem .5rem;
-}
+  flex-direction: column;
+  width: 60px;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
 
-section:nth-child(2), section:nth-child(4),section:nth-child(6) {
-  color: white;
-  background-color: var(--color-olive);
-}
+  a[href*="github"] {
+    padding: 10px;
+  }
 
-section:nth-child(5) {
-  background-color: var(--color-yellow);
-}
-
-article {
-  width: 40rem;
-  max-width: 100%;
-  text-align: justify;
-}
-
-h1 {
-  font-size: 2em;
-  font-weight: bold;
+  img {
+    max-width: 100%;
+  }
 }
