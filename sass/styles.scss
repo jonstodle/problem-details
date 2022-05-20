@@ -1,9 +1,44 @@
 @import "fonts";
+@import "colors";
 
 html, body {
   font-family: "Atkinson Hyperlegible", sans-serif;
+  margin: 0;
+  font-size: 16px;
+  background-color: var(--color-background);
+}
+
+a {
+  color: currentColor;
+  font-weight: bolder;
 }
 
 code {
   font-family: "JetBrains Mono", monospace;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  padding: 2rem .5rem;
+}
+
+section:nth-child(2), section:nth-child(4),section:nth-child(6) {
+  color: white;
+  background-color: var(--color-olive);
+}
+
+section:nth-child(5) {
+  background-color: var(--color-yellow);
+}
+
+article {
+  width: 40rem;
+  max-width: 100%;
+  text-align: justify;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
 }

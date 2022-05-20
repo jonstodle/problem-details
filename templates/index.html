@@ -4,11 +4,17 @@
 
 {% block body %}
 
-{{ section.content | safe }}
+<section>
+  <article>
+    {{ section.content | safe }}
+  </article>
+</section>
 
 {% for page in section.pages %}
 <section>
-  {{ page.content | safe }}
+  <article>
+    {{ page.content | safe }}
+  </article>
 </section>
 {% endfor %}
 
