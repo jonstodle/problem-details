@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Problem Details - A Standardized Structure For API Errors</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  
+
+<section class="content-block">
+  <article>
+    <h1 id="problem-details">Problem Details</h1>
+<p>Problem Details is a standardized way to express error situations in a JSON Web API.</p>
+<p>Problem Details is defined in <a href="https://datatracker.ietf.org/doc/html/rfc7807">RFC7807</a></p>
+
+  </article>
+</section>
+
+
+<section class="content-block">
+  <article>
+    <h2 id="summary">Summary</h2>
+<p>Sometimes a simple <a href="https://httpcod.es">HTTP Status Code</a> isn't enough to convey the details of a response. While an HTML page might suffice for a human, programmatic consumers of your API need something more standardized.</p>
+<p>The <a href="https://datatracker.ietf.org/doc/html/rfc7807">Problem Details RFC</a> suggests a structure to make it possible to distinguish different errors from one another.</p>
+
+  </article>
+</section>
+
+<section class="content-block">
+  <article>
+    <h2 id="members-of-problem-details">Members of Problem Details</h2>
+<h3 id="type-string"><code>type: string</code></h3>
+<p>A URI that uniquely identifies the problem. This is used by the consumer of the API to determine which error has occurred. Different occurrences of the same type of error should use the same <code>type</code> value.</p>
+<h3 id="title-string"><code>title: string</code></h3>
+<p>A human-readable name for the problem. This should not change between different occurrences of the same type of problem. The exception is to localize the title.</p>
+<h3 id="status-number"><code>status: number</code></h3>
+<p>The HTTP status code of the response. This is included to preserve the status code in case it is changed by a proxy or cache before reaching the API consumer. It also preserves the status if the response is stored for later review, such as in a log message.</p>
+<h3 id="detail-string"><code>detail: string</code></h3>
+<p>A human-readable explanation of the specific occurrence of problem. API consumers should not try to parse this for information, instead extra members should be defined (see below).</p>
+<h3 id="instance-string"><code>instance: string</code></h3>
+<p>A URI that identifies the specific occurrence of the problem. This could dereference to a more detailed explanation of the specific occurrence.</p>
+
+  </article>
+</section>
+
+<section class="content-block">
+  <article>
+    <h2 id="extra-members">Extra Members</h2>
+<p>When defining a new type of problem details it's encouraged to include any additional data in dedicated fields alongside the ones defined above.</p>
+
+  </article>
+</section>
+
+<section class="content-block">
+  <article>
+    <h2 id="when-not-to-use-problem-details">When Not To Use Problem Details</h2>
+<p>When an HTTP Status Code is able to convey enough meaning by itself, no new problem details is necessary. If you want to keep consistency with other types of errors, the recommended solution is to omit the <code>type</code> field or set it to <code>about:blank</code> to indicate not specific information is available for the error. The <code>title</code> field should be set to the status phrase of the status, e.g. &quot;Not Found&quot; for status code <code>404</code>.</p>
+
+  </article>
+</section>
+
+<section class="content-block">
+  <article>
+    <h2 id="remember-security">Remember Security</h2>
+<p>As always when exposing something on the internet, be wary of what information you're serving up. While Problem Details enables and encourages providing more details, care should be taken when exposing extra information regarding an error. Carefully verify that all information included can't be exploited or compromised.</p>
+
+  </article>
+</section>
+
+
+
+</main>
+
+<aside class="links-container">
+  <a href="https://github.com/jonstodle/problem-details" aria-label="Source code on Github" data-balloon-pos="left">
+    <img src="/github.png" alt="Visit Github repository">
+  </a>
+
+  <a href="https://ko-fi.com/jonstodle" aria-label="Support me on Ko-fi" data-balloon-pos="left">
+    <img src="/kofi.png" alt="Support me on Ko-fi">
+  </a>
+</aside>
+</body>
+</html>
